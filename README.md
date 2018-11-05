@@ -76,6 +76,6 @@ if __name__ == '__main__':
 
 ## ifttt
 
-[Alt text](iftttthis.png)
+![Alt text](iftttthis.png)
 
-[Alt text](iftttthen.png)
+![Alt text](iftttthen.png)
