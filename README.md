@@ -16,8 +16,8 @@ From here, you can simply program the pi in whatever way you want. You can have 
 
 ```
 sudo apt update && sudo apt upgrade -y
-sudo apt install python-pip python-flask
-pip -u install flask
+sudo apt install python3-pip python3-flask
+pip3 install flask
 ```
 
 
