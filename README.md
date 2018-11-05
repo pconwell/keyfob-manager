@@ -12,6 +12,8 @@ From here, you can simply program the pi in whatever way you want. You can have 
 
 ## temp
 
+![Alt text](layout.png)
+
 ```
 sudo apt update && sudo apt upgrade -y
 sudo apt install python-pip python-flask
