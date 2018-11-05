@@ -10,3 +10,27 @@ Once the transistor is wired across the button on the keyfob, it will mimic a bu
 
 From here, you can simply program the pi in whatever way you want. You can have it press the button at a certain time, or certain conditions or use ifttt webhooks... really, whatever you can imagine.
 
+## temp
+
+arm.py
+``` python
+# python 2 (because that's what's on raspbian)
+import RPi.GPIO as g
+from time import sleep
+
+pin = 25
+
+g.setmode(g.BCM)
+g.setwarnings(False)
+g.setup(pin,g.OUT)
+
+g.output(pin,g.HIGH)
+print "output HIGH, LED on, arming house"
+sleep(2)
+
+
+g.output(pin,g.LOW)
+print "output LOW, LED off, button released"
+#sleep(444)
+
+```
