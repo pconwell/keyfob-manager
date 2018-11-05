@@ -10,18 +10,18 @@ Once the transistor is wired across the button on the keyfob, it will mimic a bu
 
 From here, you can simply program the pi in whatever way you want. You can have it press the button at a certain time, or certain conditions or use ifttt webhooks... really, whatever you can imagine.
 
-## temp
+## schematic
 
 ![Alt text](layout.png)
 
+## requirements
 ```
 sudo apt update && sudo apt upgrade -y
 sudo apt install python3-pip python3-flask
 pip3 install flask
 ```
 
-
-arm.py
+## flask
 ``` python
 from flask import Flask, request, abort
 
@@ -68,3 +68,14 @@ def webhook():
 if __name__ == '__main__':
      app.run(host='0.0.0.0', port=80, debug=True)
 ```
+
+## crontab
+
+
+## firewall & port forwarding
+
+## ifttt
+
+[Alt text](iftttthis.png)
+
+[Alt text](iftttthen.png)
