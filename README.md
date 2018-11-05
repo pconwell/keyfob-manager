@@ -23,32 +23,48 @@ pip3 install flask
 
 arm.py
 ``` python
+from flask import Flask, request, abort
+
 import RPi.GPIO as g
 from time import sleep
 
-house = 4
-bmw = 6
-lexus = 5
+things = {'house': 4,
+          'bmw': 6,
+          'lexus' : 5}
 
 g.setmode(g.BCM)
 g.setwarnings(False)
-g.setup(bmw,g.OUT)
-g.setup(lexus,g.OUT)
-g.setup(house,g.OUT)
-
-
+g.setup(things['bmw'],g.OUT)
+g.setup(things['lexus'],g.OUT)
+g.setup(things['house'],g.OUT)
 
 def activate(pin):
-	print("output high, LED on, pressing button")
-	g.output(pin,g.HIGH)
-	sleep(2)
-	print("output low, LED off, released button")
-	g.output(pin,g.LOW)
-	sleep(1)
+        print("output high, LED on, pressing button")
+        g.output(pin,g.HIGH)
+        sleep(2)
+        print("output low, LED off, released button")
+        g.output(pin,g.LOW)
+        sleep(1)
 
-activate(bmw)
-activate(lexus)
-activate(house)
+app = Flask(__name__)
 
 
+@app.route('/webhook', methods=['GET'])
+def webhook():
+
+    thing = request.args['thing']
+
+    thing = thing.strip().lower()
+
+    try:
+        activate(things[thing])
+    except ValueError:
+        print("that thing doesn't exist")
+
+    return  ''' The thing is: {} '''.format(thing)
+    #abort(400)
+
+
+if __name__ == '__main__':
+     app.run(host='0.0.0.0', port=80, debug=True)
 ```
