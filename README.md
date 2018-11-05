@@ -23,7 +23,7 @@ pip -u install flask
 
 arm.py
 ``` python
-# python 2 (because that's what's on raspbian)
+# python 3
 import RPi.GPIO as g
 from time import sleep
 
@@ -34,12 +34,12 @@ g.setwarnings(False)
 g.setup(pin,g.OUT)
 
 g.output(pin,g.HIGH)
-print "output HIGH, LED on, arming house"
+print("output HIGH, LED on, arming house")
 sleep(2)
 
 
 g.output(pin,g.LOW)
-print "output LOW, LED off, button released"
+print("output LOW, LED off, button released")
 #sleep(444)
 
 ```
