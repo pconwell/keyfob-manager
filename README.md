@@ -23,23 +23,32 @@ pip3 install flask
 
 arm.py
 ``` python
-# python 3
 import RPi.GPIO as g
 from time import sleep
 
-pin = 25
+house = 4
+bmw = 6
+lexus = 5
 
 g.setmode(g.BCM)
 g.setwarnings(False)
-g.setup(pin,g.OUT)
-
-g.output(pin,g.HIGH)
-print("output HIGH, LED on, arming house")
-sleep(2)
+g.setup(bmw,g.OUT)
+g.setup(lexus,g.OUT)
+g.setup(house,g.OUT)
 
 
-g.output(pin,g.LOW)
-print("output LOW, LED off, button released")
-#sleep(444)
+
+def activate(pin):
+	print("output high, LED on, pressing button")
+	g.output(pin,g.HIGH)
+	sleep(2)
+	print("output low, LED off, released button")
+	g.output(pin,g.LOW)
+	sleep(1)
+
+activate(bmw)
+activate(lexus)
+activate(house)
+
 
 ```
