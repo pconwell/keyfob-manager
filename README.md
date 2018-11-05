@@ -12,6 +12,13 @@ From here, you can simply program the pi in whatever way you want. You can have 
 
 ## temp
 
+```
+sudo apt update && sudo apt upgrade -y
+sudo apt install python-pip python-flask
+pip -u install flask
+```
+
+
 arm.py
 ``` python
 # python 2 (because that's what's on raspbian)
