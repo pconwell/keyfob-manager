@@ -10,6 +10,8 @@ Once the transistor is wired across the button on the keyfob, it will mimic a bu
 
 From here, you can simply program the pi in whatever way you want. You can have it press the button at a certain time, or certain conditions or use ifttt webhooks... really, whatever you can imagine.
 
+This is a work in progress. If all you want to do is trigger a lock at a certain time of day (for example, you want to send a lock signal every night at 8pm), this is very straight forward as long as you don't mind doing a little bit of soldering. The wiring is the same no matter how you want to trigger the lock (cron, ifttt, etc). I suppose if you don't want to bother with ifttt and listening for webhooks, you could use an arduino board and probably be even easier/cheaper.
+
 ## schematic
 
 ![Alt text](layout.png)
@@ -22,6 +24,7 @@ pip3 install flask
 ```
 
 ## flask
+> to listen for get requests (for remote triggering, i.e. ifttt)
 ``` python
 from flask import Flask, request, abort
 
@@ -70,11 +73,14 @@ if __name__ == '__main__':
 ```
 
 ## crontab
+> to trigger at a certain time each day
+
 
 
 ## firewall & port forwarding
 
 ## ifttt
+> to trigger via iftt (for alexa and/or google home integration - for example, or any other triggers)
 
 ![Alt text](iftttthis.png)
 
