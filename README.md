@@ -73,7 +73,42 @@ if __name__ == '__main__':
 ```
 
 ## crontab
-> to trigger at a certain time each day
+> running this as a cronjob is the easiest way to to do this. If you ONLY want to run this as a cronjob, you don't need to worry about flask, ifttt, port forwarding, etc.
+
+The below example will run at 3:30am each day. Keep in mind that it is based off the system clock, so if the system clock is set to UTC, this may be actually 6:30pm local (or whatever the timezone difference is for you).
+
+`$cat ~/keyfob/arm.py`
+```python
+import RPi.GPIO as g
+from time import sleep
+
+house = 4
+bmw = 6
+lexus = 5
+
+g.setmode(g.BCM)
+g.setwarnings(False)
+g.setup(bmw,g.OUT)
+g.setup(lexus,g.OUT)
+g.setup(house,g.OUT)
+
+
+
+def activate(pin):
+	print("output high, LED on, pressing button")
+	g.output(pin,g.HIGH)
+	sleep(2)
+	print("output low, LED off, released button")
+	g.output(pin,g.LOW)
+	sleep(1)
+
+activate(bmw)
+activate(lexus)
+activate(house)
+```
+
+`$ crontab -e`
+`30 3 * * * python /home/pi/keyfob/arm.py`
 
 
 
