@@ -78,6 +78,18 @@ if __name__ == '__main__':
 
 
 ## firewall & port forwarding
+Set up your router to forward the port you need to the flask server. This will vary greatly depending on what router you have but the general settings should look something like this:
+
+Item      |Setting
+:---------|:----------
+From IP   |Any
+From Port |The port you entered into ifttt
+To IP     |IP address of Raspberry Pi
+To Port   |Flask port
+
+
+
+
 
 ## ifttt
 > to trigger via iftt (for alexa and/or google home integration - for example, or any other triggers)
