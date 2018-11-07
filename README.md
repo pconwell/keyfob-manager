@@ -82,6 +82,6 @@ if __name__ == '__main__':
 ## ifttt
 > to trigger via iftt (for alexa and/or google home integration - for example, or any other triggers)
 
-![Alt text](iftttthis.png)
-
-![Alt text](iftttthen.png)
+                           |
+:-------------------------:|:-------------------------:
+![Alt text](iftttthis.png) | ![Alt text](iftttthen.png)
