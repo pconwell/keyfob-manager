@@ -26,6 +26,8 @@ This is a work in progress. If all you want to do is trigger a lock at a certain
 
 \* keyfob 2 had 'special' needs...
 
+schematic generated with https://www.circuit-diagram.org/editor/
+
 ## requirements
 ```
 sudo apt update && sudo apt upgrade -y
@@ -142,3 +144,5 @@ To Port   |Flask port
  This (Google Assistant    | That (Webhook)
 :-------------------------:|:-------------------------:
 ![Alt text](iftttthis.png) | ![Alt text](iftttthen.png)
+
+
