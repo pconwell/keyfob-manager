@@ -10,6 +10,8 @@ The reason this project started is because I have had multiple incidences in whi
 
 Once the transistor is wired across the button on the keyfob, it will mimic a button press just as if you had actually physically pressed the button on the fob.
 
+> unless you want to occationally test and replace batteries, you will most likely want to remove the battery and wire the power side to the 3v3 supply from the rpi. Double check that your keyfob uses 3v3 power, but so far every keyfob I've come across has used 3v3.
+
 From here, you can simply program the pi in whatever way you want. You can have it press the button at a certain time, or certain conditions or use ifttt webhooks... really, whatever you can imagine.
 
 This is a work in progress. If all you want to do is trigger a lock at a certain time of day (for example, you want to send a lock signal every night at 8pm), this is very straight forward as long as you don't mind doing a little bit of soldering. The wiring is the same no matter how you want to trigger the lock (cron, ifttt, etc). I suppose if you don't want to bother with ifttt and listening for webhooks, you could use an arduino board and probably be even easier/cheaper.
