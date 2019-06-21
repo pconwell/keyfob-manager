@@ -24,7 +24,7 @@ This is a work in progress. If all you want to do is trigger a lock at a certain
 
 ![Alt text](layout.png)
 
-/* keyfob 2 had 'special' needs...
+\* keyfob 2 had 'special' needs...
 
 ## requirements
 ```
