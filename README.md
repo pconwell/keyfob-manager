@@ -18,6 +18,8 @@ This is a work in progress. If all you want to do is trigger a lock at a certain
 
 > note: While the fundamental problem is pretty simple (wire a transistor across the button) we want to *also* replace the battery in the keyfob so we don't have to worry about a power source. (So far) All the keyfobs have used a 3v battery so using the 3.3v output from the raspberry pi has worked well. Using the pi as a 3v power supply *and* using the pi to power the transistor adds complexity (obviously).
 
+> Also note that you may need to play with each keyfob to see exactly how to trigger a button press. For example, on one keyfob if I wired a lead on each side of the button then shorted out the two wires it would trigger a button press (seems straight forward, right?), but if I wired a transistor across each side of the button then energized the transistor... nothing would happen. For whatever reason, I had to wire the transistor between one side of the button and ground. See keyfob 2 below.
+
 ## schematic
 
 ![Alt text](layout.png)
