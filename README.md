@@ -84,6 +84,23 @@ if __name__ == '__main__':
      app.run(host='0.0.0.0', port=80, debug=True)
 ```
 
+## to start flask server at startup
+
+`/etc/rc.local`
+
+```
+# Print the IP address
+_IP=$(hostname -I) || true
+if [ "$_IP" ]; then
+  printf "My IP address is %s\n" "$_IP"
+fi
+
+# run flask web listener for keyfob.py
+python3 /home/pi/flask/listen.py >> log.txt 2>&1 &
+
+exit 0
+```
+
 ## crontab
 > running this as a cronjob is the easiest way to to do this. If you ONLY want to run this as a cronjob, you don't need to worry about flask, ifttt, port forwarding, etc.
 
