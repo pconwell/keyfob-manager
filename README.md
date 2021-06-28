@@ -32,16 +32,28 @@ schematic generated with https://www.circuit-diagram.org/editor/
 ```
 sudo apt update && sudo apt upgrade -y
 sudo apt install python3-pip python3-flask
-pip3 install flask
+sudo pip3 install flask graypy
 ```
 
 ## flask
 > to listen for get requests (for remote triggering, i.e. ifttt)
+> (you can ignore the disable adblocker part - that's just a quick fix for another project)
+> (also, if you aren't using a logging server, you can ignore the graylog/graypy parts)
 ``` python
 from flask import Flask, request, abort
 
 import RPi.GPIO as g
 from time import sleep
+import logging
+import graypy
+import requests
+
+my_logger = logging.getLogger('Keyfob Manager')
+my_logger.setLevel(logging.DEBUG)
+
+handler = graypy.GELFUDPHandler('192.168.1.91', 12201)
+my_logger.addHandler(handler)
+
 
 things = {'house': 4,
           'bmw': 6,
@@ -70,35 +82,38 @@ def webhook():
     thing = request.args['thing']
 
     thing = thing.strip().lower()
+    my_logger.debug(f"WEBHOOK_REQUEST: '{thing}'")
 
-    try:
-        activate(things[thing])
-    except ValueError:
-        print("that thing doesn't exist")
+    if thing in ["adblocker","ad blocker","%20ad%20blocker"]:
+        requests.get('http://192.168.1.93/admin/api.php?disable=900&auth=')
+        return f'{{"TYPE":"WEBHOOK_REQUEST","object":"{thing}"}}'
 
-    return  ''' The thing is: {} '''.format(thing)
-    #abort(400)
+    else:
+
+        try:
+            activate(things[thing])
+            my_logger.debug(f"WEBHOOK_REQUEST: valid {thing}")
+            return f'{{"TYPE":"WEBHOOK_REQUEST","object":"{thing}"}}'
+        except KeyError:
+            #print("that thing doesn't exist")
+            my_logger.debug(f"WEBHOOK_REQUEST: invalid {thing}")
+            abort(404)
+
+        #return f"'WEBHOOK_REQUEST': '{thing}'"
+        #abort(400)
 
 
 if __name__ == '__main__':
-     app.run(host='0.0.0.0', port=80, debug=True)
+     app.run(host='0.0.0.0', port=5000, debug=False)
 ```
 
 ## to start flask server at startup
+> add the following to rc.local
 
 `/etc/rc.local`
 
 ```
-# Print the IP address
-_IP=$(hostname -I) || true
-if [ "$_IP" ]; then
-  printf "My IP address is %s\n" "$_IP"
-fi
-
-# run flask web listener for keyfob.py
-python3 /home/pi/flask/listen.py >> log.txt 2>&1 &
-
-exit 0
+python3 /home/pconwell/flask/listen.py 2>&1 | logger &
 ```
 
 ## crontab
