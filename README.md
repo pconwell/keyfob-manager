@@ -1,24 +1,26 @@
 ## WORK IN PROGRESS
 > temp update notes:
 
-for pi zero
+for pi zero  
 
-install raspberry pi os (lite)
+install raspberry pi os (lite)  
 
-> to make ssh play nice
-ssh pi@192.168.0.xxx 'echo IPQoS 0x00 | sudo tee -a /etc/ssh/sshd_config'  
-ssh pi@192.168.0.xxx 'sudo shutdown -r now'  
-sudo nano /etc/ssh/sshd_config -> allow root (non-password) for ansible  
+> to make ssh play nice  
+ssh pi@192.168.0.xxx 'echo IPQoS 0x00 | sudo tee -a /etc/ssh/sshd_config'   
+ssh pi@192.168.0.xxx 'sudo shutdown -r now'   
+sudo nano /etc/ssh/sshd_config -> allow root (non-password) for ansible   
 
-> update system
-sudo apt update && sudo apt upgrade -y  
-sudo apt autoremove -y && sudo apt autoclean && sudo apt clean
+> update system  
+sudo apt update && sudo apt upgrade -y   
+sudo apt autoremove -y && sudo apt autoclean && sudo apt clean  
 
-> install git (technically optional)
-sudo apt install git
+> install git (technically optional)  
+sudo apt install git  
 
-> executable
-make listener.py executable?
+> executable  
+make listener.py executable?  
+https://stackoverflow.com/questions/57031864/running-flask-app-automatically-after-boot-does-not-work-correctly  
+make sure flask et al is installed for root  
 
 
 
