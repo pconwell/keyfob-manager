@@ -1,4 +1,10 @@
 ## WORK IN PROGRESS
+> temp update notes:
+
+ssh pi@192.168.0.xxx 'echo IPQoS 0x00 | sudo tee -a /etc/ssh/sshd_config'  
+ssh pi@192.168.0.xxx 'sudo shutdown -r now'  
+sudo nano /etc/ssh/sshd_config -> allow root (non-password) for ansible
+
 
 # keyfob-manager
 raspberry pi to control keyfobs (car, house alarm, etc)
