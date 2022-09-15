@@ -41,7 +41,7 @@ This is a work in progress. If all you want to do is trigger a lock at a certain
 
 ## schematic
 
-![Alt text](layout.png)
+![Alt text](/repo_pngs/layout.png)
 
 \* keyfob 2 had 'special' needs...
 
@@ -194,6 +194,6 @@ To Port   |Flask port
 
  This (Google Assistant    | That (Webhook)
 :-------------------------:|:-------------------------:
-![Alt text](iftttthis.png) | ![Alt text](iftttthen.png)
+![Alt text](/repo_pngs/iftttthis.png) | ![Alt text](/repo_pngs/iftttthen.png)
 
 
