@@ -1,9 +1,19 @@
 ## WORK IN PROGRESS
 > temp update notes:
 
+for pi zero
+
+install raspberry pi os (lite)
+
+> to make ssh play nice
 ssh pi@192.168.0.xxx 'echo IPQoS 0x00 | sudo tee -a /etc/ssh/sshd_config'  
 ssh pi@192.168.0.xxx 'sudo shutdown -r now'  
-sudo nano /etc/ssh/sshd_config -> allow root (non-password) for ansible
+sudo nano /etc/ssh/sshd_config -> allow root (non-password) for ansible  
+
+> update system
+sudo apt update && sudo apt upgrade -y  
+sudo apt autoremove -y && sudo apt autoclean && sudo apt clean
+
 
 
 # keyfob-manager
