@@ -14,6 +14,9 @@ sudo nano /etc/ssh/sshd_config -> allow root (non-password) for ansible
 sudo apt update && sudo apt upgrade -y  
 sudo apt autoremove -y && sudo apt autoclean && sudo apt clean
 
+> install git (technically optional)
+sudo apt install git
+
 
 
 # keyfob-manager
