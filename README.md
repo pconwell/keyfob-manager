@@ -17,6 +17,9 @@ sudo apt autoremove -y && sudo apt autoclean && sudo apt clean
 > install git (technically optional)
 sudo apt install git
 
+> executable
+make listener.py executable?
+
 
 
 # keyfob-manager
