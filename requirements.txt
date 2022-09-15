@@ -1,0 +1,5 @@
+RPi.GPIO
+flask
+logging
+graypy
+requests
