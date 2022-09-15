@@ -1,4 +1,5 @@
-# repo specific
+# repo specific - ignore pngs & png directory
+repo_pngs/
 *.png
 
 # Byte-compiled / optimized / DLL files
