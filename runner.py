@@ -13,15 +13,17 @@ my_logger.addHandler(handler)
 
 
 # create dictionary of acceptable key works -> gpio pin numbers
-things = {'house' : 21,
-          'alarm' : 21,
-          'lexus' : 22,
-          'ads' :   None}
+# pin 3 (ads) is a pin that I *personaly* won't be using
+things = {'house' : 29,
+          'alarm' : 29,
+          'lexus' : 31,
+          'ads'   : 3}
 
 # Setup GPIO
-GPIO.setmode(g.BOARD)
+GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
-GPIO.setup(list(things.values()),GPIO.OUT)
+pin_list = [int(i) for i in things.values()]
+GPIO.setup(pin_list,GPIO.LOW)
 
 
 def button_press(pin, duration):
@@ -50,7 +52,7 @@ def activate(thing, things=things):
         return True
 
 
-if __name__ == '__main__'
+if __name__ == '__main__':
 
     activate('alarm', things)
     activate('lexus', things)
