@@ -15,7 +15,7 @@ my_logger.addHandler(handler)
 # setup flask app
 app = Flask(__name__)
 
-# route to lisen for post requests (i.e. http://108.195.6.193:5000/json_webhook )
+# route to lisen for post requests (i.e. http://IP:PORT/json_webhook )
 @app.route('/json_webhook', methods=['POST'])
 def json_example():
 
